@@ -24,6 +24,39 @@ int main(int argc, const char* argv[]) {
     string n;
     int count = 0;
 
+    while (flag) {
+
+        cout << "Введите букву: ";
+        getline(cin, n);
+
+        if (n[0] == char(32)) //считает кол-во слов
+            count++;
+
+        if (n[0] != char(48)) {
+            addEnd(&first, n[0]);
+        } 
+        else {
+
+            flag = false;
+            Print(first);
+
+            //заполнение нового списка
+            while (first->next)
+            {
+                if (first->n == char(32))
+                    count--;
+                if (count == 0)
+                    break;
+
+                addEnd(&second, first->n);
+                first = first->next;
+
+            }
+            
+            Print(second);
+        }
+    }
+
     return 0;
 }
 
