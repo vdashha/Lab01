@@ -17,8 +17,8 @@ void Print(List* first);
 
 int main(int argc, const char* argv[]) {
     setlocale(LC_ALL, "");
-    List* first = NULL; //указатель на первый элемент первого списка
-    List* second = NULL; //указатель на первый элемент второго списка
+    List* first = NULL; //pointer to the first element of the first list
+    List* second = NULL; //pointer to the first element of the second list
 
     bool flag = true;
     string n;
@@ -26,10 +26,10 @@ int main(int argc, const char* argv[]) {
 
     while (flag) {
 
-        cout << "Введите букву: ";
+        cout << "Enter a letter: ";
         getline(cin, n);
 
-        if (n[0] == char(32)) //считает кол-во слов
+        if (n[0] == char(32)) //counts the number of words
             count++;
 
         if (n[0] != char(48)) {
@@ -40,7 +40,7 @@ int main(int argc, const char* argv[]) {
             flag = false;
             Print(first);
 
-            //заполнение нового списка
+            //populating a new list
             while (first->next)
             {
                 if (first->n == char(32))
@@ -60,28 +60,28 @@ int main(int argc, const char* argv[]) {
     return 0;
 }
 
-//вывод списка
+//list output
 void Print(List* first)
 {
-    cout << "\nВывод списка\n";
+    cout << "\nList output\n";
     if (first == NULL)
-        cout << "\nСписок пуст.\n\n";
+        cout << "\nThe list is empty.\n\n";
     else
     {
-        cout << "\nСписок:\n";
+        cout << "\nList:\n";
         while (first != NULL)
         {
-            cout << "Буква " << first->n << "      Адрес: " << first->next << endl;
+            cout << "Letter " << first->n << "      Address:" << first->next << endl;
             first = first->next;
         }
     }
 
 }
 
-//заполнение списка
+//filling the list
 void addEnd(List** first, char n) 
 {
-    if (*first == NULL)//проверка на первый элемент
+    if (*first == NULL)
     {
         List* tmp = new List;
         tmp->n = n;
@@ -89,7 +89,7 @@ void addEnd(List** first, char n)
         *first = tmp;
 
     }
-    else //следующие элементы 
+    else 
     {
         List* p, *tmp;
         tmp = new List;
